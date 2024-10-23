@@ -24,9 +24,12 @@ namespace Reddit.Controllers
 
         // GET: api/Users
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult<IEnumerable<User>>> GetUsers([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 1000, [FromQuery] bool? isAscending = true, [FromQuery] string? sortKey = null, [FromQuery] string? searchKey = null, [FromQuery] string? filterOn = null)
         {
+
             return await _context.Users.ToListAsync();
+
+
         }
 
         // GET: api/Users/5
