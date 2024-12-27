@@ -1,9 +1,8 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reddit", "Reddit.csproj", "{A09C6E85-3D09-402A-8DAD-F3D0D6C1C565}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reddit", "Reddit.API\Reddit.csproj", "{A09C6E85-3D09-402A-8DAD-F3D0D6C1C565}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
