@@ -35,7 +35,7 @@ namespace Reddit
                 p.HasOne(p => p.Author)
                 .WithMany(u => u.Posts)
                 .HasForeignKey(p => p.AuthorId)
-                .OnDelete(DeleteBehavior.SetNull);
+                .OnDelete(DeleteBehavior.ClientNoAction);
 
                 p.HasOne(p => p.Community)
                 .WithMany(c => c.Posts)
