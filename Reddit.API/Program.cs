@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Reddit;
 using Reddit.Repositories;
 using System.Text.Json.Serialization;
+using Reddit.Middlewares;
 using Serilog;
 using Serilog.Events;
 
@@ -44,6 +45,8 @@ builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
         .AllowAnyMethod()));
 
 builder.Services.AddHealthChecks();
+builder.Services.AddScoped<ExceptionHandlingMiddleware>();
+
 
 var app = builder.Build();
 
@@ -56,8 +59,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseCors();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseAuthorization();
 app.MapControllers();
