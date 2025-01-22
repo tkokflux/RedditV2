@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Logging.ClearProviders();
 
 // Configure Serilog
-builder.Services.AddSerilog(); // <-- add this
+builder.Services.AddSerilog();
 
 builder.Host.UseSerilog((context, services, configuration) => configuration
     .MinimumLevel.Information()
