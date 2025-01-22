@@ -2,8 +2,24 @@ using Microsoft.EntityFrameworkCore;
 using Reddit;
 using Reddit.Repositories;
 using System.Text.Json.Serialization;
+using Serilog;
+using Serilog.Events;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Remove default logging providers
+builder.Logging.ClearProviders();
+
+// Configure Serilog
+builder.Services.AddSerilog(); // <-- add this
+
+builder.Host.UseSerilog((context, services, configuration) => configuration
+    .MinimumLevel.Information()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+    .MinimumLevel.Override("System", LogEventLevel.Warning)
+    .Enrich.FromLogContext()
+    .WriteTo.Console());
+
 
 builder.Services.AddControllers()
      .AddJsonOptions(options =>
@@ -20,7 +36,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
     options.UseLazyLoadingProxies();
 });
 builder.Services.AddScoped<IPostsRepository, PostsRepository>();
-// Scoped, Singleton, Transient
 
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
     policy
@@ -37,6 +52,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    Log.Information("Swagger UI enabled for Development environment");
 }
 
 app.UseHttpsRedirection();
@@ -46,10 +62,20 @@ app.UseCors();
 app.UseAuthorization();
 app.MapControllers();
 
-// Map health checks endpoint
 app.MapHealthChecks("/health");
 
-// Map root path to return "Running" status
 app.MapGet("/", () => Results.Ok("Running Reddit API"));
 
-app.Run();
+try
+{
+    Log.Information("Starting Reddit API");
+    app.Run();
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application terminated unexpectedly");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
