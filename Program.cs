@@ -20,7 +20,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options => {
     options.UseLazyLoadingProxies();
 });
 builder.Services.AddScoped<IPostsRepository, PostsRepository>();
-// Scoped, Singleton, Transient
+builder.Services.AddScoped<ICommunityRepository, CommunityRepository>();
+
 
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
     policy
@@ -30,7 +31,6 @@ builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
