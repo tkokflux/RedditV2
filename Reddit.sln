@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reddit", "Reddit.API\Reddit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reddit.UnitTests", "Reddit.UnitTests\Reddit.UnitTests.csproj", "{89909192-807D-47E5-93C2-9EFC09045695}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedditV2.Tests", "RedditV2.Tests\RedditV2.Tests.csproj", "{3C4B9168-BB34-43D0-B170-051BA5E174A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{89909192-807D-47E5-93C2-9EFC09045695}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89909192-807D-47E5-93C2-9EFC09045695}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89909192-807D-47E5-93C2-9EFC09045695}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3C4B9168-BB34-43D0-B170-051BA5E174A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C4B9168-BB34-43D0-B170-051BA5E174A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C4B9168-BB34-43D0-B170-051BA5E174A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C4B9168-BB34-43D0-B170-051BA5E174A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
